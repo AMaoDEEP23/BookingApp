@@ -23,7 +23,7 @@ export default function PlacesFormPage(){
       if(!id){
         return;
       }
-      axios.get('/places/'+id).then(response => {
+      axios.get('https://bookingapp-r8rw.onrender.com/places/'+id).then(response => {
         const {data} = response;
         setTitle(data.title);
         setAddress(data.address);
@@ -79,7 +79,7 @@ export default function PlacesFormPage(){
       extraInfo, checkIn, checkOut, maxGuests, price};
       if(id){
         //update
-        await axios.put('/places', {
+        await axios.put('https://bookingapp-r8rw.onrender.com/places', {
           id, 
           ...placeData
         });
@@ -87,7 +87,7 @@ export default function PlacesFormPage(){
       
       } else{
         //new place
-        await axios.post('/places', placeData);
+        await axios.post('https://bookingapp-r8rw.onrender.com/places', placeData);
        setRedirect(true)
       }
       

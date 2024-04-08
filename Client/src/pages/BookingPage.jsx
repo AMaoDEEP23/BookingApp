@@ -10,7 +10,7 @@ export default function BookingPage(){
 
     useEffect(() => {
         if(id){
-            axios.get('/bookings').then(response => {
+            axios.get('https://bookingapp-r8rw.onrender.com/bookings').then(response => {
                const foundBooking = response.data.filter(({_id}) => _id === id);
                if (foundBooking){
                 setBooking(...foundBooking);

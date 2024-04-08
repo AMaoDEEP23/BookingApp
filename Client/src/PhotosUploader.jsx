@@ -8,7 +8,7 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
 
   async function addPhotoByLink(ev) {
     ev.preventDefault();
-    const { filename } = await axios.post("/upload-by-link", {
+    const { filename } = await axios.post("https://bookingapp-r8rw.onrender.com/upload-by-link", {
       link: photoLink,
     });
     onChange((prev) => {

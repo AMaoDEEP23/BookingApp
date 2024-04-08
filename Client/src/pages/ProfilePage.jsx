@@ -14,7 +14,7 @@ export default function ProfilePage() {
   }
 
   async function logout() {
-    await axios.post("/logout");
+    await axios.post("https://bookingapp-r8rw.onrender.com/logout");
 
     setRedirect("/");
     setUser(null);

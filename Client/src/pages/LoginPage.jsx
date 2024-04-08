@@ -12,7 +12,7 @@ export default function LoginPage() {
   async function handleLoginSubmit(ev){
     ev.preventDefault();
     try {
-     const {data} = await axios.post("/login", {email,password})
+     const {data} = await axios.post("https://bookingapp-r8rw.onrender.com/login", {email,password})
      setUser(data);
      alert("Successfully logged in");
      setRedirect(true);

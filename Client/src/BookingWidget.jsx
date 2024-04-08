@@ -28,7 +28,7 @@ export default function BookingWidget(place) {
 
     async function bookThisPlace(){
         
-        const response = await axios.post('/bookings', {
+        const response = await axios.post('https://bookingapp-r8rw.onrender.com/bookings', {
             checkIn, checkOut, numberOfGuests, phone, name,
             place:place.place._id,
             price:numberOfNight * place.place.price,

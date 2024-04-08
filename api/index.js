@@ -22,8 +22,8 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5174'
-    // origin: 'https://booking-app-rho-umber.vercel.app/'
+    // origin: 'http://localhost:5174'
+    origin: 'https://booking-app-rho-umber.vercel.app/'
 }));
 
 
@@ -204,5 +204,5 @@ app.get('/bookings', async (req, res) => {
     res.json( await Booking.find({user:userData.id}).populate('place'))
 });
 
-app.listen(3000);
-// app.listen(`https://bookingapp-r8rw.onrender.com`);
+// app.listen(3000);
+app.listen(`https://bookingapp-r8rw.onrender.com`);
