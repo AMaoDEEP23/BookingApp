@@ -21,7 +21,8 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5174'
+    // origin: 'http://localhost:5174'
+    origin: 'https://booking-app-rho-umber.vercel.app/'
 }));
 
 
@@ -176,3 +177,4 @@ app.get("/places", async (req, res) => {
 
 
 app.listen(3000);
+// app.listen(`https://bookingapp-r8rw.onrender.com`);
