@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5173'
+    origin: 'http://localhost:5174'
 }));
 
 
@@ -124,7 +124,7 @@ app.post('/places', (req, res) => {
     const placeDoc = await Place.create({
         owner:userData.id,
         title, address, photos:addedPhotos, description, 
-        perks,checkIn, checkOut, MaxGuests, price,
+        perks,checkIn, checkOut, maxGuests:MaxGuests, price,
 
         });
         res.json(placeDoc);
@@ -145,6 +145,7 @@ app.get('/places/:id', async (req, res) => {
     res.json(await Place.findById(id));
 });
 
+
 app.put('/places', async (req, res) => {
     
     const {token} = req.cookies;
@@ -159,7 +160,7 @@ app.put('/places', async (req, res) => {
                 
                 placeDoc.set({
                     title, address, photos:addedPhotos, description, 
-                    perks,checkIn, checkOut, MaxGuests, price,
+                    perks,checkIn, checkOut, maxGuests:MaxGuests, price,
                 })
                 await placeDoc.save();
                 res.json('ok');
