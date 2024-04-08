@@ -10,10 +10,12 @@ import ProfilePage from "./pages/ProfilePage";
 import PlacesPage from "./pages/PlacesPage";
 import PlacesFormPage from "./pages/PlacesFormPage";
 import PlacePage from "./pages/PlacePage";
+import BookingsPage from "./pages/BookingsPage";
+import BookingPage from "./pages/BookingPage";
 
 
-// axios.defaults.baseURL = "http://localhost:3000";
-axios.defaults.baseURL = "https://bookingapp-r8rw.onrender.com";
+axios.defaults.baseURL = "http://localhost:3000";
+// axios.defaults.baseURL = "https://bookingapp-r8rw.onrender.com";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -30,7 +32,8 @@ function App() {
       <Route path="/account/places/new" element={<PlacesFormPage/>} />
       <Route path="/account/places/:id" element={<PlacesFormPage/>} />
       <Route path="/place/:id" element={<PlacePage/>}/>
-
+      <Route path="/account/bookings" element={<BookingsPage/>} />
+      <Route path="/account/booking/:id" element={<BookingPage/>} />
       </Route>
      
     </Routes>

@@ -21,15 +21,15 @@ export default function RegisterPage() {
        
     }
 
-    useEffect(() => {
-      fetch('https://bookingapp-r8rw.onrender.com')
-        .then(response => {
-          console.log('Backend is up');
-        })
-        .catch(error => {
-          console.error('Error pinging backend:', error);
-        });
-    }, []);
+    // useEffect(() => {
+    //   fetch('https://bookingapp-r8rw.onrender.com')
+    //     .then(response => {
+    //       console.log('Backend is up');
+    //     })
+    //     .catch(error => {
+    //       console.error('Error pinging backend:', error);
+    //     });
+    // }, []);
 
   return (
     <div className="mt-4 grow flex items-center justify-around">
