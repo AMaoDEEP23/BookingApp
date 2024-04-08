@@ -20,11 +20,7 @@ const jwtSecret = 'eyJhbGciOiJ'
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
-app.use(cors({
-    // credentials: true,
-    // origin: 'http://localhost:5174'
-    // origin: 'https://booking-app-rho-umber.vercel.app/'
-}));
+app.use(cors());
 
 
 mongoose.connect(process.env.MONGO_URL)
