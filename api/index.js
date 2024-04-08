@@ -59,8 +59,10 @@ try {
 })
 
 app.post('/login', async (req, res) => {
+    try{
     const {email,password} = req.body;
     const userDoc = await User.findOne({email})
+    
     if (userDoc) {
         const passOk = bcrypt.compareSync(password, userDoc.password)
         if (passOk) {
@@ -77,10 +79,17 @@ app.post('/login', async (req, res) => {
         }
     } else {
         res.json('not found')
+        
     }
+}catch (e){
+    console.log('/login')
+    res.status(500).json(e);
+}
 });
 
+
 app.get('/profile', (req, res) => {
+    try{
     const {token} = req.cookies;
     if (token) {
         jwt.verify(token, jwtSecret, {}, async (err, userData) => {
@@ -91,15 +100,24 @@ app.get('/profile', (req, res) => {
     } else {
         res.json(null);
     }
-    
+}catch (e){
+    console.log('/profile')
+    res.status(500).json(e);
+}
 })
 
 app.post('/logout', (req, res) => {
+    try{
     res.cookie('token','').json(true);
+    }catch (e){
+        console.log('/logout')
+        res.status(500).json(e);
+    }
 })
 
 
 app.post('/upload-by-link', async (req, res) => {
+    try{
     const {link} = req.body;
     console.log(link);
     const newName = 'photo' + Date.now() + '.jpg';
@@ -108,10 +126,15 @@ app.post('/upload-by-link', async (req, res) => {
         dest: __dirname + '/uploads/' + newName,
     });
     res.json(newName);
+} catch(e){
+    console.log('/upload-by-link')
+    res.status(500).json(e);
+}
 })
 
 const photosMiddleware = multer({dest: 'uploads'});
 app.post('/upload', photosMiddleware.array('photos', 100), (req, res) => {
+    try{
     const uploadedFiles = [];
     for (let i = 0; i < req.files.length; i++) {
         const {path,originalname } = req.files[i];
@@ -122,9 +145,14 @@ app.post('/upload', photosMiddleware.array('photos', 100), (req, res) => {
         uploadedFiles.push(newPath.replace('uploads',''));
     }
     res.json(uploadedFiles);
+} catch (e){
+    console.log('/upload')
+    res.status(500).json(e);
+}
 });
 
 app.post('/places', (req, res) => {
+    try{
     const {token} = req.cookies;
     const {
         title, address, addedPhotos, description, 
@@ -141,24 +169,38 @@ app.post('/places', (req, res) => {
         res.json(placeDoc);
         console.log(placeDoc);
     });
+}catch(e){
+    console.log('/places')
+    res.status(500).json(e);
+}
 });
 
 app.get('/user-places', (req, res) => {
+    try{
     const {token} = req.cookies;
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
         const {id} = userData;
         res.json(await Place.find({owner:id}));
     });
+} catch (e){
+    console.log('/user-places')
+    res.status(500).json(e);
+}
 });
 
 app.get('/places/:id', async (req, res) => {
+    try{
     const {id} = req.params;
     res.json(await Place.findById(id));
+    } catch (e){
+        console.log('/places/:id')
+        res.status(500).json(e);
+    }
 });
 
 
 app.put('/places', async (req, res) => {
-    
+    try{
     const {token} = req.cookies;
     const {
         id, title, address, addedPhotos, description, 
@@ -177,10 +219,19 @@ app.put('/places', async (req, res) => {
                 res.json('ok');
             }
         });
+    } catch(e){
+        console.log('/places')
+        res.status(500).json(e);
+    }
 });
 
 app.get("/places", async (req, res) => {
+    try{
     res.json(await Place.find());
+    } catch (e){
+        console.log("/places")
+        res.status(500).json(e);
+    }
 })
 
 app.post('/bookings', async (req, res) => {
@@ -192,15 +243,22 @@ app.post('/bookings', async (req, res) => {
        
         res.json(doc);
     }).catch((err) => {
+        console.log('/bookings')
         throw err;
     })
+
 });
 
 
 
 app.get('/bookings', async (req, res) => {
+    try{
     const userData = await getUserDataFromReq(req);
     res.json( await Booking.find({user:userData.id}).populate('place'))
+    } catch (e){
+        console.log('/bookings')
+        res.status(500).json(e);
+    }
 });
 
 app.listen(3000);
