@@ -87,7 +87,7 @@ export default function PlacesFormPage(){
       
       } else{
         //new place
-        await axios.post('https://bookingapp-r8rw.onrender.com/places', placeData);
+        await axios.post('https://bookingapp-r8rw.onrender.com/places', placeData, {withCredentials:true});
        setRedirect(true)
       }
       
