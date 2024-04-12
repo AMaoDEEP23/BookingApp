@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
-    origin: true,
+    origin: ['https://booking-2g76ju3so-noppanats-projects.vercel.app'],
     credentials: true,
   })
 );
