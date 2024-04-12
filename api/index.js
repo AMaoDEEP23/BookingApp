@@ -20,12 +20,22 @@ const jwtSecret = "eyJhbGciOiJ";
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
-app.use(
-  cors({
-    origin: ['https://booking-2g76ju3so-noppanats-projects.vercel.app'],
+// app.use(
+//   cors({
+//     origin: ['https://booking-2g76ju3so-noppanats-projects.vercel.app'],
+//     credentials: true,
+//   })
+// );
+
+const corsOptions = {
+  origin: ['http://localhost:5173/', 'https://booking-2g76ju3so-noppanats-projects.vercel.app'],
+    // origin: 'https://project-mlb.vercel.app/',
+    methods: "GET,PUT,PATCH,POST,DELETE",
     credentials: true,
-  })
-);
+    optionsSuccessStatus: 204, 
+  };
+
+app.use(cors(corsOptions))
 
 mongoose.connect(process.env.MONGO_URL);
 
