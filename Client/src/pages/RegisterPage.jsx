@@ -13,7 +13,7 @@ export default function RegisterPage() {
             name,
             email,
             password,
-        });
+        }, {withCredentials: true});
         alert('Registration successfully')
         } catch (e){
           alert('Registration failed')

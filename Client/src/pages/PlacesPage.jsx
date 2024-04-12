@@ -9,7 +9,7 @@ export default function PlacesPage() {
   
   const [places, setPlaces] = useState([]);
   useEffect(() => {
-    axios.get('https://bookingapp-r8rw.onrender.com/user-places').then(({data})=> {
+    axios.get('https://bookingapp-r8rw.onrender.com/user-places', {withCredentials: true}).then(({data})=> {
       setPlaces(data);
     });
   },[]);

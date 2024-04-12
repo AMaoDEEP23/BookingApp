@@ -7,7 +7,7 @@ export function UserContextProvider({children}){
    const [ready, setReady] = useState(false);
     useEffect(() => {
         if (!user) {
-            axios.get('https://bookingapp-r8rw.onrender.com/profile').then(({data}) => {
+            axios.get('https://bookingapp-r8rw.onrender.com/profile', {withCredentials: true}).then(({data}) => {
             setUser(data);
             setReady(true);
             });

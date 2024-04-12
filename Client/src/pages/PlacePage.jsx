@@ -14,7 +14,7 @@ export default function PlacePage() {
     if (!id) {
       return;
     }
-    axios.get(`https://bookingapp-r8rw.onrender.com/places/${id}`).then((response) => {
+    axios.get(`https://bookingapp-r8rw.onrender.com/places/${id}`,{withCredentials: true}).then((response) => {
       setPlace(response.data);
     });
   }, [id]);

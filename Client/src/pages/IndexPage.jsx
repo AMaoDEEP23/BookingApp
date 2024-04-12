@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function IndexPage (){
     const [places, setPlaces] = useState([])
     useEffect(() => {
-        axios.get('https://bookingapp-r8rw.onrender.com/places').then(response => {
+        axios.get('https://bookingapp-r8rw.onrender.com/places',{withCredentials: true}).then(response => {
             setPlaces(response.data);
         })
     }, []);

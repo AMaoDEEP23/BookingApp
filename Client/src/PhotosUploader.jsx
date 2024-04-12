@@ -10,7 +10,7 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
     ev.preventDefault();
     const { filename } = await axios.post("https://bookingapp-r8rw.onrender.com/upload-by-link", {
       link: photoLink,
-    });
+    },{withCredentials: true});
     onChange((prev) => {
       return [...prev, filename];
     });
@@ -40,7 +40,7 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
     axios
       .post("upload", data, {
         headers: { "Content-Type": "multipart/form-data" },
-      })
+      },{withCredentials: true})
       .then((response) => {
         const { data: filenames } = response;
         onChange((prev) => {

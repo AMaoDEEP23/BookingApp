@@ -32,7 +32,7 @@ export default function BookingWidget(place) {
             checkIn, checkOut, numberOfGuests, phone, name,
             place:place.place._id,
             price:numberOfNight * place.place.price,
-        });
+        }, {withCredentials: true});
         const bookingId = response.data._id;
         setRedirect(`/account/booking/${bookingId}`)
     }
