@@ -28,7 +28,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 // );
 
 const corsOptions = {
-  origin: ['http://localhost:5173/', 'https://booking-2g76ju3so-noppanats-projects.vercel.app'],
+  origin: ['http://localhost:5173', 'https://booking-2g76ju3so-noppanats-projects.vercel.app'],
     // origin: 'https://project-mlb.vercel.app/',
     methods: "GET,PUT,PATCH,POST,DELETE",
     credentials: true,

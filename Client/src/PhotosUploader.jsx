@@ -83,7 +83,7 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
             <div className="h-32 flex relative" key={link}>
               <img
                 className="rounded-2xl w-full object-cover position-center"
-                src={"https://bookingapp-r8rw.onrender.com/places" + link}
+                src={"https://bookingapp-r8rw.onrender.com/uploads" + link}
                 alt=""
               />
               <button

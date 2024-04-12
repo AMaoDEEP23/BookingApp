@@ -33,7 +33,7 @@ export default function PlaceGallery({place}){
               {place?.photos?.length > 0 &&
                 place.photos.map((photo) => (
                   <div>
-                    <img src={"http://localhost:3000/uploads/" + photo} alt="" />
+                    <img src={"https://bookingapp-r8rw.onrender.com/uploads/" + photo} alt="" />
                   </div>
                 ))}
             </div>
@@ -51,7 +51,7 @@ export default function PlaceGallery({place}){
                 <img
                  onClick={() => setShowallPhotos(true)}
                   className=" aspect-square cursor-pointer object-cover"
-                  src={"http://localhost:3000/uploads/" + place.photos[0]}
+                  src={"https://bookingapp-r8rw.onrender.com/uploads/" + place.photos[0]}
                 />
               </div>
             )}
@@ -61,7 +61,7 @@ export default function PlaceGallery({place}){
               <img
               onClick={() => setShowallPhotos(true)}
                 className=" aspect-square cursor-pointer object-cover"
-                src={"http://localhost:3000/uploads/" + place.photos[1]}
+                src={"https://bookingapp-r8rw.onrender.com/uploads/" + place.photos[1]}
               />
             )}
             <div className="overflow-hidden">
@@ -69,7 +69,7 @@ export default function PlaceGallery({place}){
                 <img
                 onClick={() => setShowallPhotos(true)}
                   className=" aspect-square object-cover cursor-pointer relative top-2"
-                  src={"http://localhost:3000/uploads/" + place.photos[2]}
+                  src={"https://bookingapp-r8rw.onrender.com/uploads/" + place.photos[2]}
                 />
               )}
             </div>
